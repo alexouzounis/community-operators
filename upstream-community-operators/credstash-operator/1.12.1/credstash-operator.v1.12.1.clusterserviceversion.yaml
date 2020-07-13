@@ -5,13 +5,37 @@ metadata:
   namespace: placeholder
   annotations:
     alm-examples: >-
-      [{"apiVersion":"credstash.ouzi.tech/v1alpha1","kind":"CredstashSecret","metadata":{"name":"example-credstashsecret","namespace":"credstash-operator"},"spec":{"secrets":[{"key":"key1","table":"credential-store"}]}},{"apiVersion":"credstash.ouzi.tech/v1alpha1","kind":"CredstashSecret","metadata":{"name":"example-credstashsecret","namespace":"credstash-operator"},"spec":{"secrets":[{"key":"key1","table":"credential-store"}]}}]
+      [
+        {
+        "apiVersion": "credstash.ouzi.tech/v1alpha1",
+        "kind": "CredstashSecret",
+        "metadata": {
+          "name": "very-secret",
+          "namespace": "test"
+        },
+        "spec": {
+          "name": "example",
+          "secrets": [
+            {
+              "key": "test-secret",
+              "name": "renamed-test-secret",
+              "table": "credential-store",
+              "version": 1,
+              "context": {
+                "key1": "value1",
+                "key2": "value2"
+              }
+            }
+          ],
+          "type": "Opaque"
+        }
+      }
+      ]
     categories: 'Security'
     certified: 'false'
     createdAt: '2020-07-20 01:01:01'
     description: >-
-      A Kubernetes operator that creates Kubernetes secrets from credstash
-      secrets
+      An operator that creates and manages Kubernetes secrets from Credstash secrets
     containerImage: 'quay.io/ouzi/credstash-operator:v1.12.1'
     support: 'Ouzi Team'
     capabilities: Seamless Upgrades
